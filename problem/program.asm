@@ -17,6 +17,9 @@
         @67
         D=D-A
 
+        @color
+        M=0
+
         @SETLCL       //Clean screen set up
         D;JEQ
         //Cinfigure C input
@@ -30,9 +33,6 @@
 (SETCL)
         @iscroos
         M=1
-
-        @color
-        M=0
 
         @16384          //16384 + (0*32) + (0/16)
         D=A
@@ -123,7 +123,7 @@
         D=M
 
         @END
-        D;JEQ           //if cont = 0 go to SETLINEH
+        D;JEQ           //if cont = 0 go to END
 
         //-----------------------------------------------------
 
@@ -131,7 +131,7 @@
         D=M
         @pscreen
         A=M
-        M=D             //Paint Black
+        M=D             //Paint Black or white
         
         @cont           //cont-1
         M=M-1
@@ -148,7 +148,7 @@
 (END)
         @iscroos
         D=M
-        @SETLINEH
+        @SETLINEH       //Checks if it hast to go cross D=M || M=0
         D;JEQ
         @INIT
         0;JMP
